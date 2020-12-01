@@ -6,7 +6,6 @@ import cx from 'classnames';
 
 const Cards = (props) => {
     const {data: { confirmed, recovered, deaths, lastUpdate }} = props;
-    console.log(props.data);
     if(!confirmed){
         return 'Loading...';
     }
@@ -17,7 +16,7 @@ const Cards = (props) => {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Infected</Typography>
                         <Typography variant="h5">
-                            <CountUp start = {0} end = {confirmed.value} duration = {2} separator = "," />
+                            <CountUp start = {0} end = {confirmed} duration = {2} separator = "," />
                         </Typography>
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of active cases of covid 19</Typography> 
@@ -27,7 +26,7 @@ const Cards = (props) => {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Recovered</Typography>
                         <Typography variant="h5">
-                            <CountUp start = {0} end = {recovered.value} duration = {2} separator = ","/>
+                            <CountUp start = {0} end = {recovered} duration = {2} separator = ","/>
                         </Typography>
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of recoveries from covid 19</Typography> 
@@ -37,7 +36,7 @@ const Cards = (props) => {
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                         <Typography variant="h5">
-                            <CountUp start = {0} end = {deaths.value} duration = {2} separator = ","/>
+                            <CountUp start = {0} end = {deaths} duration = {2} separator = ","/>
                         </Typography>
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of deaths from covid 19</Typography> 

@@ -1,15 +1,14 @@
 import axios from 'axios';
-const url = "https://covid19.mathdro.id/api";
-const url2 = "https://api.covid19api.com/summary";
+const url = "https://api.covid19api.com/summary";
 
 export const fetchData = async () =>{
     try{
         const {data} = await axios.get(url);
         const modifiedData = {
-            confirmed: data.confirmed,
-            recovered: data.recovered,
-            deaths: data.deaths,
-            lastUpdate: data.lastUpdate
+            confirmed: data.Global.TotalConfirmed,
+            recovered: data.Global.TotalRecovered,
+            deaths: data.Global.TotalDeaths,
+            lastUpdate: data.Date
         }
         return modifiedData;
     } catch(err){
@@ -19,7 +18,7 @@ export const fetchData = async () =>{
 
 export const fetchCountryData = async () =>{
     try{
-        const {data:{Countries}} = await axios.get(url2);
+        const {data:{Countries}} = await axios.get(url);
         return Countries;
     } catch(err){
         console.log(err);

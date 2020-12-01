@@ -9,8 +9,7 @@ class CountryLists extends React.Component{
         this.state = {
             countryName: "",
             filteredList: [],
-            countriesList: [],
-            filtersStatus: [0,0,0,0,0,0]
+            countriesList: []
         }
     }
     async componentDidMount(){
@@ -30,9 +29,7 @@ class CountryLists extends React.Component{
         });
     }
 
-    sortData = (e) => {
-        let filterName = e.target.innerText;
-        console.log(filterName);
+    sortData = (filterName) => {
         let sortedFilteredList = this.state.filteredList.sort((country1, country2) => {
             if(filterName=="New Confirmed"){
                 if(country1.NewConfirmed==country2.NewConfirmed){
@@ -70,6 +67,8 @@ class CountryLists extends React.Component{
                 } else{
                     return (country1.TotalRecovered>country2.TotalRecovered)?1:-1;
                 }
+            } else{
+                return (country1.Country>country2.Country)?1:-1;
             }
         });
         this.setState({filteredList: sortedFilteredList});
@@ -91,13 +90,13 @@ class CountryLists extends React.Component{
                             <table className={styles.countryTables}>
                                 <thead>
                                     <tr className={styles.tableHead}>
-                                        <th onClick={this.sortData}>Name</th>
-                                        <th onClick={this.sortData}>Confirmed</th>
-                                        <th onClick={this.sortData}>New Confirmed</th>
-                                        <th onClick={this.sortData}>Recovered</th>
-                                        <th onClick={this.sortData}>New Recovered</th>
-                                        <th onClick={this.sortData}>Deaths</th>
-                                        <th onClick={this.sortData}>New Deaths</th>
+                                        <th title="Click to sort" onClick={() => this.sortData("Name")}>Name <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("Confirmed")}>Confirmed <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("New Confirmed")}>New Confirmed <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("Recovered")}>Recovered <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("New Recovered")}>New Recovered <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("Deaths")}>Deaths <span className={styles.arrowUpDown}>↕</span></th>
+                                        <th title="Click to sort" onClick={() => this.sortData("New Deaths")}>New Deaths <span className={styles.arrowUpDown}>↕</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
