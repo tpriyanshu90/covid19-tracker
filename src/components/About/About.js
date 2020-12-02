@@ -11,7 +11,13 @@ const About = (props) => {
                     Where can I find the data used for creating this app?
                 </p>
                 <p>
-                    All the data is available through an API for further analysis and development here : api.covid19api.com/summary
+                    All the data is available through an API for further analysis and development here : <a href="api.covid19api.com/summary">api.covid19api.com/summary</a> 
+                </p>
+                <p className={styles.question}>
+                    Where can I find the code for this app?
+                </p>
+                <p>
+                    The code is available on <a href="https://github.com/tpriyanshu90/covid19-tracker">GitHub</a>. Give it a star if you like it.
                 </p>
             </div>
             
